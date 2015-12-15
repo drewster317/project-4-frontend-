@@ -1,4 +1,4 @@
-var app = angular.module('dreadit', []);
+var app = angular.module('dreadit', ['ui.router']);
 
 app.controller('MainCtrl', [
   '$scope',
