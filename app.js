@@ -37,14 +37,14 @@ app.controller('MainCtrl', [
 
     $scope.posts = posts.posts;
 
-    $scope.addPost = function(){
+    $scope.addPost = function() {
       if(!$scope.title || $scope.title === '') { return; }
       $scope.posts.push({
         title: $scope.title,
         link: $scope.link,
         upvotes: 0,
         comments: [
-          {author: 'Drew', body: 'Nice post!', upvotes: 0}
+          {author: 'Drew', body: 'Nice post!', upvotes: 0},
         ]
       });
       $scope.title = '';
@@ -62,7 +62,19 @@ app.controller('PostsCtrl', [
   '$stateParams',
   'posts',
   function($scope, $stateParams, posts){
-    $scope.post = posts.post[$stateParams.id];
+    $scope.post = posts.posts[$stateParams.id];
+
+    $scope.addComment = function() {
+      if($scope.body === '') { return; }
+      $scope.posts.push({
+        body: $scope.body,
+        author: 'user',
+        upvotes: 0
+      });
+
+      $scope.body = '';
+    }
+
   }]);
 
 
