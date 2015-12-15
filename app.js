@@ -1,10 +1,19 @@
 var app = angular.module('dreadit', ['ui.router']);
 
+app.factory('posts', [function(){
+  var o = {
+    posts: []
+  };
+  return o;
+}])
+
 app.controller('MainCtrl', [
   '$scope',
-  function($scope){
+  'posts',
+  function($scope, posts){
     $scope.test = 'Hello world!';
-    $scope.posts = [];
+
+    $scope.posts = posts.posts;
 
     $scope.addPost = function(){
       if(!$scope.title || $scope.title === '') { return; }
